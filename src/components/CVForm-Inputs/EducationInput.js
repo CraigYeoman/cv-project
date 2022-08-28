@@ -6,24 +6,29 @@ const EducationInput = (props) => {
     return (
         <div>          
           Education Info Input
-          <input
-            name='school' 
-            placeholder='School'
-            value={props.education.school}
-            onChange={props.handleChangeEducation}
-          />
-          <input
-            name='phoneNumber' 
-            placeholder='Phone Number'
-            value={props.phoneNumber}
-            onChange={props.handleChange}
-          /> 
-          <input
-            name='email' 
-            placeholder='Email'
-            value={props.email}
-            onChange={props.handleChange}
-          />                
+          <form onSubmit={props.onSubmitEducation}>
+            <input
+              name='school' 
+              placeholder='School'
+              value={props.school}
+              onChange={props.handleChangeEducation}
+            />
+            <input
+              name='degree' 
+              placeholder='Degree'
+              value={props.degree}
+              onChange={props.handleChangeEducation}
+            /> 
+            <input
+              name='graduationDate' 
+              placeholder='Graducation Date'
+              value={props.graduationDate}
+              onChange={props.handleChangeEducation}
+            />
+            <button type="submit">
+              Submit
+            </button>
+            </form>               
         </div>
     )
 }

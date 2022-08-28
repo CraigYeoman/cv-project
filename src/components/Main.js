@@ -5,6 +5,7 @@ import GeneralInput from './CVForm-Inputs/GeneralInput';
 import General from "./CVForm-Render/General";
 import EducationInput from './CVForm-Inputs/EducationInput';
 import Education from "./CVForm-Render/Education"
+import uniqid from "uniqid";
 // import ExperienceInput from './CVForm-Inputs/ExperienceInput';
 
 class Main extends Component {
@@ -16,8 +17,12 @@ class Main extends Component {
         email: '',
         phoneNumber: '',
         education : {
-            school: ''
-        }
+            school: '',
+            degree: '',
+            graduationDate: '',
+            id: uniqid()
+        },
+        educationArray: []
        }
     }
 
@@ -25,7 +30,7 @@ class Main extends Component {
         this.setState({
             [event.target.name]: event.target.value
           })
-      }
+    }
 
     handleChangeEducation = (event) => {
         this.setState((prevState) => ({
@@ -36,10 +41,29 @@ class Main extends Component {
             }
           }))
     }
+
+    onSubmitEducation = (event) => {
+        event.preventDefault();
+        this.setState({
+            educationArray: this.state.educationArray.concat(this.state.education),
+            education: {
+                school: '',
+                degree: '',
+                graduationDate: '',
+                id: uniqid()
+            }
+        })
+    }
+
+    deleteEducationItem = (event) => {
+        this.setState({
+            educationArray: this.state.educationArray.filter(item => item.id !== event.target.id)
+        })
+    }
     
     render() {
         
-         const {name, email, phoneNumber, education } = this.state;
+         const {name, email, phoneNumber, education, educationArray } = this.state;
         return (
             <div>
                 <GeneralInput 
@@ -50,7 +74,10 @@ class Main extends Component {
                 />
                 <EducationInput 
                     school={education.school}
+                    degree={education.degree}
+                    graduationDate={education.graduationDate}
                     handleChangeEducation={this.handleChangeEducation}
+                    onSubmitEducation={this.onSubmitEducation}
                 />
                 {/* <ExperienceInput /> */}
                 <General 
@@ -58,7 +85,13 @@ class Main extends Component {
                     email={email}
                     phoneNumber={phoneNumber}
                 />
-                <Education />
+                <Education
+                    school={education.school}
+                    degree={education.degree}
+                    graduationDate={education.graduationDate}
+                    educationArray={educationArray}
+                    deleteEducationItem={this.deleteEducationItem}
+                />
                 
             </div>
         )
