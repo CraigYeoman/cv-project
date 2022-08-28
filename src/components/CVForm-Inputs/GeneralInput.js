@@ -1,92 +1,47 @@
 // GeneralInput.js
 // https://www.geeksforgeeks.org/how-to-handle-multiple-input-field-in-react-form-with-a-single-function/
 // https://shipshape.io/blog/react-objects-and-state/
-import React, { Component } from "react";
-import General from "../CVForm-Render/General";
-import uniqid from "uniqid";
+import React from "react";
+//import General from "../CVForm-Render/General";
+//import uniqid from "uniqid";
 
-class GeneralInput extends Component {
-    constructor(props) {
-        super(props);
+const GeneralInput = (props) => {
 
-        this.state = {
-          generalInfo: { name: '',
-                         email: '',
-                         phoneNumber: '',
-                         id: uniqid()
-                        },
-          generalInfoArray: [],
-                        
-        }
-        this.handleChange = this.handleChange.bind(this)
-        this.onSubmit = this.onSubmit.bind(this)
-    }
     
-    handleChange = (event) => {
-      this.setState((prevState) => ({
-        ...prevState,
-        generalInfo: {
-          ...prevState.generalInfo,
-          [event.target.name]: event.target.value
-        }
-    }))
-    };
 
-    onSubmit = (e) => {
-      const { name, email, phoneNumber, id } = this.state.generalInfo;
-      e.preventDefault();
-      this.setState({
-        generalInfoArray: this.state.generalInfoArray.concat(this.state.generalInfo),
-        generalInfo: { name: '',
-                      email: '',
-                      phoneNumber: '',
-                      id: uniqid()
-                      },
-      });
-      console.log(this.state.generalInfoArray )
-      alert(`
-      ____Your Details____\n
-      Name : ${name}
-      Email : ${email}
-      Phone Number : ${phoneNumber}
-      Id : ${id}
-    `)
-    };
-
-    render() {
-      const { generalInfoArray }  = this.state;
+  console.log(props)
+      
       return (
+        
         <div>
-          <form onSubmit={this.onSubmit}>
-            <label htmlFor="name">Enter Name</label>
+          
+            General Info Input
             <input
               name='name' 
               placeholder='Name'
-              value={this.state.generalInfo.name}
-              onChange={(e) => this.handleChange(e)}
+              value={props.name}
+              onChange={props.handleChange}
             />
-            <label htmlFor="phoneNumber">Enter Phone Number</label>
+           
             <input
               name='phoneNumber' 
               placeholder='Phone Number'
-              value={this.state.generalInfo.phoneNumber}
-              onChange={(e) => this.handleChange(e)}
+              value={props.phoneNumber}
+              onChange={props.handleChange}
             />
-            <label htmlFor="email">Enter email</label>
+            
             <input
               name='email' 
               placeholder='Email'
-              value={this.state.generalInfo.email}
-              onChange={(e) => this.handleChange(e)}
+              value={props.email}
+              onChange={props.handleChange}
             />
-            <button type="submit">
-              Add Name
-            </button>
-          </form>
-          <General generalInfoArray={generalInfoArray} />
+            
+          
+          
         </div>
       )
 }
-}
+
 
 export default GeneralInput
