@@ -6,41 +6,29 @@ import React from "react";
 //import uniqid from "uniqid";
 
 const GeneralInput = (props) => {
-
-    
-
-  console.log(props)
-      
-      return (
-        
-        <div>
-          
-            General Info Input
-            <input
-              name='name' 
-              placeholder='Name'
-              value={props.name}
-              onChange={props.handleChange}
-            />
-           
-            <input
-              name='phoneNumber' 
-              placeholder='Phone Number'
-              value={props.phoneNumber}
-              onChange={props.handleChange}
-            />
-            
-            <input
-              name='email' 
-              placeholder='Email'
-              value={props.email}
-              onChange={props.handleChange}
-            />
-            
-          
-          
-        </div>
-      )
+  return (
+    <div>          
+      General Info Input
+      <input
+        name='name' 
+        placeholder='Name'
+        value={props.name}
+        onChange={props.handleChange}
+      />
+      <input
+        name='phoneNumber' 
+        placeholder='Phone Number'
+        value={props.phoneNumber}
+        onChange={props.handleChange}
+      /> 
+      <input
+        name='email' 
+        placeholder='Email'
+        value={props.email}
+        onChange={props.handleChange}
+      />                
+    </div>
+  )
 }
 
 

@@ -1,11 +1,31 @@
 // EducationInput.js
 
-import React, { Component } from 'react';
+import React from 'react';
 
-class EducationInput extends Component {
-    render() {
-        return <div>EducationInput</div>
-    }
+const EducationInput = (props) => {
+    return (
+        <div>          
+          Education Info Input
+          <input
+            name='school' 
+            placeholder='School'
+            value={props.education.school}
+            onChange={props.handleChangeEducation}
+          />
+          <input
+            name='phoneNumber' 
+            placeholder='Phone Number'
+            value={props.phoneNumber}
+            onChange={props.handleChange}
+          /> 
+          <input
+            name='email' 
+            placeholder='Email'
+            value={props.email}
+            onChange={props.handleChange}
+          />                
+        </div>
+    )
 }
 
 export default EducationInput;

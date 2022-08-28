@@ -15,6 +15,9 @@ class Main extends Component {
         name: '',
         email: '',
         phoneNumber: '',
+        education : {
+            school: ''
+        }
        }
     }
 
@@ -23,10 +26,20 @@ class Main extends Component {
             [event.target.name]: event.target.value
           })
       }
+
+    handleChangeEducation = (event) => {
+        this.setState((prevState) => ({
+            ...prevState,
+            education: {
+              ...prevState.education,
+              [event.target.name]: event.target.value
+            }
+          }))
+    }
     
     render() {
         
-         const {name, email, phoneNumber } = this.state;
+         const {name, email, phoneNumber, education } = this.state;
         return (
             <div>
                 <GeneralInput 
@@ -35,7 +48,10 @@ class Main extends Component {
                     phoneNumber={phoneNumber}
                     handleChange={this.handleChange}
                 />
-                <EducationInput />
+                <EducationInput 
+                    school={education.school}
+                    handleChangeEducation={this.handleChangeEducation}
+                />
                 {/* <ExperienceInput /> */}
                 <General 
                     name={name}
