@@ -1,6 +1,7 @@
 // Main.js
 
 import React, { Component } from 'react';
+
 import GeneralInput from './CVForm-Inputs/GeneralInput';
 import General from "./CVForm-Render/General";
 import EducationInput from './CVForm-Inputs/EducationInput';
@@ -28,6 +29,7 @@ class Main extends Component {
             jobTitle: '',
             startDate: '',
             endDate: '',
+            responsibilties: [],
             id: uniqid()
         },
         experienceArray: []
@@ -87,10 +89,13 @@ class Main extends Component {
                 jobTitle: '',
                 startDate: '',
                 endDate: '',
+                responsibilties: [],
                 id: uniqid()
             }
         })
     }
+
+    
 
     deleteExperienceItem = (event) => {
         this.setState({
@@ -122,6 +127,7 @@ class Main extends Component {
                     endDate={experience.endDate}
                     handleChangeExperience={this.handleChangeExperience}
                     onSubmitExperience={this.onSubmitExperience}
+                    addResponsibility={this.addResponsibility}
                 />
                 <General 
                     name={name}
@@ -139,6 +145,7 @@ class Main extends Component {
                     jobTitle={experience.jobTitle}
                     startDate={experience.startDate}
                     endDate={experience.endDate}
+                    responsibilties={experience.responsibilties}
                     experienceArray={experienceArray}
                     deleteExperienceItem={this.deleteExperienceItem}
                 />

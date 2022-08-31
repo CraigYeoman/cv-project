@@ -1,12 +1,29 @@
 // ExperienceInput.js
 
 import React from 'react';
+import { createRoot } from 'react-dom/client';
 
 const ExperienceInput = (props) => {
-    return (
+  
+  const container = document.getElementById('experienceForm');
+  const root = createRoot(container);
+  const addResponsibility = (props) => {
+    const responsibilty = (
+        <input
+        name='responsibilties' 
+        placeholder='Responsibility'
+        value={props.responsibilties}
+        onChange={props.handleChangeExperience}
+        id='responsibilty'
+      /> 
+    )
+    root.render(responsibilty)
+}  
+  
+  return (
         <div>          
           Experience Info Input
-          <form onSubmit={props.onSubmitExperience}>
+          <form onSubmit={props.onSubmitExperience} id='experienceForm'>
             <input
               name='jobTitle' 
               placeholder='Job Title'
@@ -25,11 +42,22 @@ const ExperienceInput = (props) => {
               value={props.endDate}
               onChange={props.handleChangeExperience}
             />
+            <input
+              name='responsibilties' 
+              placeholder='Responsibility'
+              value={props.responsibilties}
+              onChange={props.handleChangeExperience}
+              id='responsibilty'
+            />
+            <button onClick={addResponsibility}>
+              Add another responsibilty
+            </button>
             <button type="submit">
               Submit
             </button>
             </form>               
         </div>
+        
     )
 }
 
