@@ -29,7 +29,7 @@ class Main extends Component {
             jobTitle: '',
             startDate: '',
             endDate: '',
-            responsibilties: [],
+            responsibilities: [],
             id: uniqid()
         },
         experienceArray: []
@@ -89,7 +89,7 @@ class Main extends Component {
                 jobTitle: '',
                 startDate: '',
                 endDate: '',
-                responsibilties: [],
+                responsibilities: [],
                 id: uniqid()
             }
         })
@@ -145,7 +145,7 @@ class Main extends Component {
                     jobTitle={experience.jobTitle}
                     startDate={experience.startDate}
                     endDate={experience.endDate}
-                    responsibilties={experience.responsibilties}
+                    responsibilities={experience.responsibilities}
                     experienceArray={experienceArray}
                     deleteExperienceItem={this.deleteExperienceItem}
                 />

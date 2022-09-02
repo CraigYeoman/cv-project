@@ -10,9 +10,9 @@ const ExperienceInput = (props) => {
   const addResponsibility = (props) => {
     const responsibilty = (
         <input
-        name='responsibilties' 
+        name='responsibilities' 
         placeholder='Responsibility'
-        value={props.responsibilties}
+        value={props.responsibilities}
         onChange={props.handleChangeExperience}
         id='responsibilty'
       /> 
@@ -43,9 +43,9 @@ const ExperienceInput = (props) => {
               onChange={props.handleChangeExperience}
             />
             <input
-              name='responsibilties' 
+              name='responsibilities' 
               placeholder='Responsibility'
-              value={props.responsibilties}
+              value={props.responsibilities}
               onChange={props.handleChangeExperience}
               id='responsibilty'
             />
